@@ -1,0 +1,26 @@
+{
+  "name": "webpack-practice",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackchased/webpack-practice.git"
+  },
+  "author": "Jack Wu <jackchased@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jackchased/webpack-practice/issues"
+  },
+  "homepage": "https://github.com/jackchased/webpack-practice#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^2.19.0",
+    "webpack": "^1.13.1",
+    "webpack-merge": "^0.13.0",
+    "webpack-validator": "^2.1.2"
+  }
+}
