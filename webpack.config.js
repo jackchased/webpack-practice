@@ -7,7 +7,10 @@ var parts = require('./lib/parts');
 
 var PATHS = {
 	app: path.join(__dirname, 'app'),
-	style: path.join(__dirname, 'app', 'main.css'),
+    style: [
+        path.join(__dirname, 'node_modules', 'purecss'),
+        path.join(__dirname, 'app', 'main.css'),
+    ],
 	build: path.join(__dirname, 'build')
 };
 
@@ -19,7 +22,9 @@ var common = {
     },
     output: {
         path: PATHS.build,
-        filename: '[name].js'
+        publicPath: '/webpack-practice/',
+        filename: '[name].[chunk].js',
+        chunkFilename: '[chunk].js'
     },
     plugins: [
         new HtmlWebpackPlugin({ title: 'webpack demo' })
@@ -42,7 +47,8 @@ switch (process.env.npm_lifecycle_event) {
         	parts.setFreeVariable('process.env.NODE_ENV', 'production'),
         	parts.extractBundle({ name: 'vendor', entries: ['react'] }),
         	parts.minify(),
-        	parts.extractCSS(PATHS.style));
+            parts.extractCSS(PATHS.style),  // change PATHS.app
+            parts.purifyCSS([ PATHS.app ]));
         break;
     default:
         config = merge(
